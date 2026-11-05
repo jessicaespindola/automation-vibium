@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Loja local</title>
+  <link rel="icon" href="logo.svg">
+  <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+  <header class="topo">
+    <a class="marca" href="index.html">Peças <span>&amp;</span> Prova</a>
+    <p class="selo">Unidade VAR-347</p>
+  </header>
+  <nav class="abas" aria-label="Laboratórios">
+    <a href="formulario.html">Formulário</a>
+    <a href="acessivel.html">Leitura</a>
+    <a href="espera.html">Espera</a>
+    <a href="midia.html">Emulação</a>
+    <a href="dialogo.html">Bordas</a>
+    <a href="relogio.html">Relógio</a>
+    <a href="loja.html" aria-current="page">Loja</a>
+  </nav>
+  <main>
+    <section class="painel">
+      <h1>Oficina local</h1>
+      <p class="lead">Peça de treino. O fluxo espelha o exemplo oficial da loja var.parts.</p>
+      <article class="cartao">
+        <h2><a id="produto" href="#produto">Battery Pack Local</a></h2>
+        <p>Pacote de bancada para a baia de serviço.</p>
+        <button type="button" data-testid="adicionar">Adicionar ao carrinho</button>
+      </article>
+      <p class="contagem">Carrinho: <strong data-testid="contagem">0</strong></p>
+      <ul data-testid="itens"></ul>
+    </section>
+  </main>
+  <script>
+    const itens = [];
+    document.querySelector("[data-testid=adicionar]").addEventListener("click", () => {
+      itens.push("Battery Pack Local");
+      document.querySelector("[data-testid=contagem]").textContent = String(itens.length);
+      document.querySelector("[data-testid=itens]").textContent = itens.join(", ");
+    });
+  </script>
+</body>
+</html>

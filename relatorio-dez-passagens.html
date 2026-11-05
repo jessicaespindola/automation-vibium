@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <title>Dez passagens da suíte</title>
+  <style>
+    :root { color-scheme: light; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", sans-serif;
+      background: #f4f1ea;
+      color: #1c2430;
+    }
+    main { max-width: 52rem; margin: 0 auto; padding: 2rem 1.25rem 3rem; }
+    h1 { margin: 0 0 0.35rem; letter-spacing: -0.03em; }
+    .fonte { margin: 0 0 1.25rem; color: #3e4a57; }
+    .numeros { display: flex; flex-wrap: wrap; gap: 0.75rem; margin: 0 0 1.5rem; }
+    .numero {
+      flex: 1 1 9rem;
+      background: #fffdf8;
+      border: 1px solid #eadfce;
+      border-radius: 14px;
+      padding: 0.85rem 1rem;
+    }
+    .numero strong { display: block; font-size: 1.45rem; }
+    .numero span { color: #3e4a57; font-size: 0.9rem; }
+    h2 { margin: 1.6rem 0 0.6rem; font-size: 1.15rem; }
+    table { width: 100%; border-collapse: collapse; background: #fffdf8; border-radius: 14px; overflow: hidden; }
+    th, td { text-align: left; padding: 0.55rem 0.75rem; border-bottom: 1px solid #eadfce; }
+    th { background: #143d4f; color: #f7f1e7; font-weight: 650; }
+    td.num { text-align: right; font-variant-numeric: tabular-nums; }
+    .aviso {
+      margin-top: 1rem;
+      padding: 0.8rem 1rem;
+      border-radius: 12px;
+      background: #fff6d8;
+      color: #6a4510;
+    }
+    .nota {
+      margin-top: 0.75rem;
+      padding: 0.8rem 1rem;
+      border-radius: 12px;
+      background: #e7f4f4;
+      color: #143d4f;
+    }
+    svg { width: 100%; height: auto; background: #fffdf8; border: 1px solid #eadfce; border-radius: 14px; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Dez passagens da suíte</h1>
+    <p class="fonte">Peças &amp; Prova · Vibium 26.8.21 · Chrome for Testing 157 · headless · 5 de novembro de 2026. Fonte: evidence/run-01.txt até run-10.txt.</p>
+    <div class="numeros">
+      <div class="numero"><strong>10/10</strong><span>passagens com exit 0</span></div>
+      <div class="numero"><strong>9/9</strong><span>roteiros ok em cada uma</span></div>
+      <div class="numero"><strong>73,0 s</strong><span>tempo médio</span></div>
+      <div class="numero"><strong>2,6 s</strong><span>do mais rápido ao mais lento</span></div>
+    </div>
+    <h2>Tempo de cada passagem (segundos)</h2>
+    <svg viewBox="0 0 640 220" role="img" aria-label="Duração de cada passagem, de 70 a 76 segundos">
+      <line x1="48" y1="20" x2="48" y2="180" stroke="#eadfce"/>
+      <line x1="48" y1="180" x2="620" y2="180" stroke="#eadfce"/>
+      <text x="8" y="28" font-size="12" fill="#3e4a57">76</text>
+      <text x="8" y="184" font-size="12" fill="#3e4a57">70</text>
+      <line x1="48" y1="100" x2="620" y2="100" stroke="#d4783a" stroke-dasharray="4 4"/>
+      <text x="500" y="92" font-size="12" fill="#8a5a12">média 73 s</text>
+      <polyline fill="none" stroke="#143d4f" stroke-width="2.5" points="72,60 128,76 184,60 240,60 296,72 352,68 408,102 464,112 520,110 576,74"/>
+      <g font-size="12" fill="#1c2430" text-anchor="middle">
+        <text x="72" y="202">01</text>
+        <text x="128" y="202">02</text>
+        <text x="184" y="202">03</text>
+        <text x="240" y="202">04</text>
+        <text x="296" y="202">05</text>
+        <text x="352" y="202">06</text>
+        <text x="408" y="202">07</text>
+        <text x="464" y="202">08</text>
+        <text x="520" y="202">09</text>
+        <text x="576" y="202">10</text>
+      </g>
+    </svg>
+    <p class="fonte">Eixo horizontal: número da passagem. Eixo vertical: duração, de 70 s a 76 s. Mínimo 71,4 s (passagem 08). Máximo 74,0 s (passagens 01, 03 e 04). Desvio 1,0 s.</p>
+    <h2>Resultado por passagem</h2>
+    <table>
+      <thead>
+        <tr><th>Passagem</th><th>Exit</th><th>Tempo</th><th>Roteiros</th><th>Avisos</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>01</td><td class="num">0</td><td class="num">74,0 s</td><td>9/9</td><td>esquema light · geo negada</td></tr>
+        <tr><td>02</td><td class="num">0</td><td class="num">73,2 s</td><td>9/9</td><td>esquema light · geo negada</td></tr>
+        <tr><td>03</td><td class="num">0</td><td class="num">74,0 s</td><td>9/9</td><td>esquema light · geo negada</td></tr>
+        <tr><td>04</td><td class="num">0</td><td class="num">74,0 s</td><td>9/9</td><td>esquema light · geo negada</td></tr>
+        <tr><td>05</td><td class="num">0</td><td class="num">73,4 s</td><td>9/9</td><td>esquema light · geo negada</td></tr>
+        <tr><td>06</td><td class="num">0</td><td class="num">73,6 s</td><td>9/9</td><td>esquema light · geo negada</td></tr>
+        <tr><td>07</td><td class="num">0</td><td class="num">71,9 s</td><td>9/9</td><td>esquema light · geo negada</td></tr>
+        <tr><td>08</td><td class="num">0</td><td class="num">71,4 s</td><td>9/9</td><td>esquema light · geo negada</td></tr>
+        <tr><td>09</td><td class="num">0</td><td class="num">71,5 s</td><td>9/9</td><td>esquema light · geo negada</td></tr>
+        <tr><td>10</td><td class="num">0</td><td class="num">73,3 s</td><td>9/9</td><td>esquema light · geo negada</td></tr>
+      </tbody>
+    </table>
+    <p class="aviso">Em toda passagem o roteiro 06 repetiu os mesmos avisos: prefers-color-scheme continuou light, e a geolocalização voltou erro User denied Geolocation. A suíte conta o roteiro como ok. Nenhum roteiro falhou.</p>
+    <h2>Os nove roteiros</h2>
+    <table>
+      <thead><tr><th>Roteiro</th><th>Arquivo</th><th>Nas 10 passagens</th></tr></thead>
+      <tbody>
+        <tr><td>01 hello</td><td>labs/hello.py</td><td>ok</td></tr>
+        <tr><td>02 formulário</td><td>labs/formulario.py</td><td>ok</td></tr>
+        <tr><td>03 leitura</td><td>labs/leitura.py</td><td>ok</td></tr>
+        <tr><td>04 espera</td><td>labs/espera.py</td><td>ok</td></tr>
+        <tr><td>05 sessão</td><td>labs/sessao.py</td><td>ok</td></tr>
+        <tr><td>06 emulação</td><td>labs/emulacao.py</td><td>ok, com os dois avisos</td></tr>
+        <tr><td>07 bordas</td><td>labs/bordas.py</td><td>ok</td></tr>
+        <tr><td>08 relógio</td><td>labs/relogio.py</td><td>ok</td></tr>
+        <tr><td>09 gravação</td><td>labs/gravacao.py</td><td>ok</td></tr>
+      </tbody>
+    </table>
+    <p class="nota">O Vibium 26.8.21 não tem um comando de relatório da suíte. check marca um checkbox. O histórico destas dez corridas é esta página e os arquivos evidence/run-01.txt até run-10.txt.</p>
+  </main>
+</body>
+</html>

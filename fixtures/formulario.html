@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Formulário da oficina</title>
+  <link rel="icon" href="logo.svg">
+  <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+  <header class="topo">
+    <a class="marca" href="index.html">Peças <span>&amp;</span> Prova</a>
+    <p class="selo">Unidade VAR-347</p>
+  </header>
+  <nav class="abas" aria-label="Laboratórios">
+    <a href="formulario.html" aria-current="page">Formulário</a>
+    <a href="acessivel.html">Leitura</a>
+    <a href="espera.html">Espera</a>
+    <a href="midia.html">Emulação</a>
+    <a href="dialogo.html">Bordas</a>
+    <a href="relogio.html">Relógio</a>
+    <a href="loja.html">Loja</a>
+  </nav>
+  <main>
+    <section class="painel">
+      <h1>Ficha da unidade</h1>
+      <p class="lead">Salvar com a ficha vazia mostra o erro de cada campo. A ficha só grava quando e-mail, série, país e termo estão válidos.</p>
+      <form>
+        <p class="resumo" data-testid="resumo" role="alert"></p>
+        <div class="campo">
+          <label for="email">E-mail</label>
+          <input id="email" name="email" type="email" autocomplete="off">
+          <p class="erro" data-testid="erro-email"></p>
+        </div>
+        <div class="campo">
+          <label for="busca">Busca</label>
+          <input id="busca" name="busca" type="text" placeholder="número de série" autocomplete="off">
+          <p class="erro" data-testid="erro-busca"></p>
+        </div>
+        <div class="campo">
+          <label for="pais">País</label>
+          <select id="pais" name="pais">
+            <option value="">escolha</option>
+            <option value="Brasil">Brasil</option>
+            <option value="Outro">Outro</option>
+          </select>
+          <p class="erro" data-testid="erro-pais"></p>
+        </div>
+        <div class="campo campo-check">
+          <input id="consentimento" name="consentimento" type="checkbox">
+          <label for="consentimento">Aceito o termo de serviço</label>
+          <p class="erro" data-testid="erro-termo"></p>
+        </div>
+        <div class="campo">
+          <label for="nota">Nota</label>
+          <input id="nota" name="nota" type="text" data-testid="nota" autocomplete="off">
+        </div>
+        <button type="button" data-testid="salvar">Salvar</button>
+      </form>
+      <p class="aviso" data-testid="aviso"></p>
+      <p class="recibo" data-testid="resultado"></p>
+    </section>
+  </main>
+  <script>
+    const form = document.querySelector("form");
+    const resultado = document.querySelector("[data-testid=resultado]");
+    const aviso = document.querySelector("[data-testid=aviso]");
+    const resumo = document.querySelector("[data-testid=resumo]");
+    const erros = {
+      email: document.querySelector("[data-testid=erro-email]"),
+      busca: document.querySelector("[data-testid=erro-busca]"),
+      pais: document.querySelector("[data-testid=erro-pais]"),
+      termo: document.querySelector("[data-testid=erro-termo]"),
+    };
+
+    function mostrar(el, mensagem) {
+      el.textContent = mensagem;
+      const campo = el.closest(".campo");
+      if (campo) campo.classList.toggle("invalido", Boolean(mensagem));
+    }
+
+    document.querySelector("[data-testid=salvar]").addEventListener("click", () => {
+      const email = form.email.value.trim();
+      const busca = form.busca.value.trim();
+      const pais = form.pais.value;
+      const termo = form.consentimento.checked;
+      let valido = true;
+
+      if (!email) {
+        mostrar(erros.email, "Informe o e-mail.");
+        valido = false;
+      } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        mostrar(erros.email, "E-mail inválido.");
+        valido = false;
+      } else {
+        mostrar(erros.email, "");
+      }
+
+      if (!busca) {
+        mostrar(erros.busca, "Informe o número de série.");
+        valido = false;
+      } else {
+        mostrar(erros.busca, "");
+      }
+
+      if (!pais) {
+        mostrar(erros.pais, "Escolha o país.");
+        valido = false;
+      } else {
+        mostrar(erros.pais, "");
+      }
+
+      if (!termo) {
+        mostrar(erros.termo, "Aceite o termo de serviço.");
+        valido = false;
+      } else {
+        mostrar(erros.termo, "");
+      }
+
+      if (!valido) {
+        resumo.textContent = "Não foi possível salvar. Corrija os campos abaixo.";
+        aviso.textContent = "";
+        resultado.textContent = "";
+        return;
+      }
+
+      resumo.textContent = "";
+      aviso.textContent = "Ficha salva.";
+      resultado.textContent = email + "|" + pais + "|" + (termo ? "sim" : "nao");
+    });
+  </script>
+</body>
+</html>

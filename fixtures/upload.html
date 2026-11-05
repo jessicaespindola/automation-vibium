@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Upload</title>
+  <link rel="icon" href="logo.svg">
+  <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+  <header class="topo">
+    <a class="marca" href="index.html">Peças <span>&amp;</span> Prova</a>
+    <p class="selo">Unidade VAR-347</p>
+  </header>
+  <nav class="abas" aria-label="Laboratórios">
+    <a href="formulario.html">Formulário</a>
+    <a href="acessivel.html">Leitura</a>
+    <a href="espera.html">Espera</a>
+    <a href="midia.html">Emulação</a>
+    <a href="dialogo.html" aria-current="page">Bordas</a>
+    <a href="relogio.html">Relógio</a>
+    <a href="loja.html">Loja</a>
+  </nav>
+  <main>
+    <section class="painel">
+      <h1>Anexar nota</h1>
+      <p class="lead">Registrar sem arquivo mostra o erro. Com arquivo, o nome aparece na faixa verde.</p>
+      <div class="campo">
+        <label for="arquivo">Arquivo</label>
+        <input id="arquivo" data-testid="arquivo" type="file">
+      </div>
+      <button type="button" data-testid="registrar">Registrar</button>
+      <p class="erro" data-testid="erro-arquivo"></p>
+      <p class="aviso" data-testid="nome"></p>
+    </section>
+  </main>
+  <script>
+    const entrada = document.querySelector("[data-testid=arquivo]");
+    const erro = document.querySelector("[data-testid=erro-arquivo]");
+    const nome = document.querySelector("[data-testid=nome]");
+
+    function publicar() {
+      const file = entrada.files[0];
+      if (!file) {
+        erro.textContent = "Selecione um arquivo antes de registrar.";
+        nome.textContent = "";
+        return;
+      }
+      erro.textContent = "";
+      nome.textContent = file.name;
+    }
+
+    entrada.addEventListener("change", publicar);
+    document.querySelector("[data-testid=registrar]").addEventListener("click", publicar);
+  </script>
+</body>
+</html>

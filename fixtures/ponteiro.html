@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ponteiro</title>
+  <link rel="icon" href="logo.svg">
+  <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+  <header class="topo">
+    <a class="marca" href="index.html">Peças <span>&amp;</span> Prova</a>
+    <p class="selo">Unidade VAR-347</p>
+  </header>
+  <nav class="abas" aria-label="Laboratórios">
+    <a href="formulario.html">Formulário</a>
+    <a href="acessivel.html">Leitura</a>
+    <a href="espera.html">Espera</a>
+    <a href="midia.html">Emulação</a>
+    <a href="dialogo.html" aria-current="page">Bordas</a>
+    <a href="relogio.html">Relógio</a>
+    <a href="loja.html">Loja</a>
+  </nav>
+  <main>
+    <section class="painel">
+      <h1>Ponteiro</h1>
+      <p class="lead">Mouse, toque e Enter devolvem o eco na faixa.</p>
+      <div class="acoes">
+        <button type="button" data-testid="alvo">Alvo do mouse</button>
+        <button type="button" data-testid="toque">Alvo do toque</button>
+        <div class="campo">
+          <label for="comando">Comando</label>
+          <input id="comando" data-testid="comando" type="text" autocomplete="off">
+        </div>
+        <p class="eco" data-testid="eco"></p>
+      </div>
+    </section>
+  </main>
+  <script>
+    const eco = document.querySelector("[data-testid=eco]");
+    function publicar(texto) {
+      eco.textContent = texto;
+      eco.dataset.tom = texto ? "ok" : "";
+    }
+    document.querySelector("[data-testid=alvo]").addEventListener("click", () => {
+      publicar("clique-coordenada");
+    });
+    document.querySelector("[data-testid=toque]").addEventListener("click", () => {
+      publicar("toque-coordenada");
+    });
+    document.querySelector("[data-testid=comando]").addEventListener("keydown", (event) => {
+      if (event.key === "Enter") publicar(event.target.value);
+    });
+  </script>
+</body>
+</html>

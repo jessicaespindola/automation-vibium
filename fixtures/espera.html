@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Espera</title>
+  <link rel="icon" href="logo.svg">
+  <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+  <header class="topo">
+    <a class="marca" href="index.html">Peças <span>&amp;</span> Prova</a>
+    <p class="selo">Unidade VAR-347</p>
+  </header>
+  <nav class="abas" aria-label="Laboratórios">
+    <a href="formulario.html">Formulário</a>
+    <a href="acessivel.html">Leitura</a>
+    <a href="espera.html" aria-current="page">Espera</a>
+    <a href="midia.html">Emulação</a>
+    <a href="dialogo.html">Bordas</a>
+    <a href="relogio.html">Relógio</a>
+    <a href="loja.html">Loja</a>
+  </nav>
+  <main>
+    <section class="painel">
+      <h1>Sinal de pronto</h1>
+      <p class="lead">Seguir fica apagado até o sinal da baia mudar.</p>
+      <div class="acoes">
+        <button type="button" data-testid="armar">Armar sinal</button>
+        <button type="button" data-testid="seguir" disabled>Seguir</button>
+        <p class="estado" data-testid="estado" data-tom="espera">aguardando</p>
+      </div>
+    </section>
+  </main>
+  <script>
+    document.querySelector("[data-testid=armar]").addEventListener("click", () => {
+      setTimeout(() => {
+        const estado = document.querySelector("[data-testid=estado]");
+        estado.textContent = "pronto";
+        estado.dataset.tom = "ok";
+        document.querySelector("[data-testid=seguir]").disabled = false;
+      }, 400);
+    });
+  </script>
+</body>
+</html>
